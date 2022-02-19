@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cloud-ui-css.netlify.app/css/main.css"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Quizmill</title>
+  </head>
+  <body class="bg-light text-dark">
+    <!-- Navbar -->
+    <nav class="navbar navbar-sticky bg-secondary text-light">
+      <a href="#sidenav-open" class="navbar-hamburger">
+        <i class="fas fa-bars"></i>
+      </a>
+
+      <div class="text-md text-semibold text-light">
+        Quiz<span class="text-primary">mill</span>
+      </div>
+
+      <ul class="navbar-list text-bold">
+        <li class="navbar-item">Explore More</li>
+        <li class="navbar-item">Dashboard</li>
+        <li class="navbar-item">
+          <a href="/login.html">Log out</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main -->
+    <h2 class="text-center m-sm">JavaScript Quiz</h2>
+
+    <div class="d-flex flex-column flex-center gap-sm m-auto">
+      <ul class="list">
+        <li class="list-title">Rules for the quiz:</li>
+        <li class="list-item">
+          The countdown timer at the top right corner of screen will display.
+        </li>
+        <li class="list-item">Each question have 4 options.</li>
+        <li class="list-item">
+          There will be 2 marks for every correction answer.
+        </li>
+        <li class="list-item">
+          There will be deduction of 1 mark on wrong answer.
+        </li>
+        <li class="list-item">You can not visit the previous question.</li>
+        <li class="list-item">
+          Every question need to be completed in given time. It will be auto
+          submitted.
+        </li>
+      </ul>
+      <div>
+        <input type="checkbox" name="" id="agree-rules" />
+        <label for="agree-rules">I agree to all the rules</label>
+        <div class="mt-sm">
+          <a href="/pages/question.html" class="btn btn-sm">Start</a>
+          <a href="/pages/question.html" class="btn btn-sm btn-secondary"
+            >Go Back</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
