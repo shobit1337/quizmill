@@ -4,13 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+
     <link
       rel="stylesheet"
       href="https://cloud-ui-css.netlify.app/css/main.css"
@@ -25,16 +19,14 @@
         <i class="fas fa-bars"></i>
       </a>
 
-      <div class="text-md text-semibold text-light">
+      <a href="/" class="text-md text-semibold text-light">
         Quiz<span class="text-primary">mill</span>
-      </div>
+      </a>
 
       <ul class="navbar-list text-bold">
-        <li class="navbar-item">Explore More</li>
-        <li class="navbar-item">Dashboard</li>
-        <li class="navbar-item">
-          <a href="/login.html">Log out</a>
-        </li>
+        <a href="/pages/explore-more.html" class="navbar-item">Explore More</a>
+        <a href="/pages/leaderboard.html" class="navbar-item">Leaderboard</a>
+        <a href="/login.html" class="navbar-item">Log out</a>
       </ul>
     </nav>
 
@@ -65,9 +57,7 @@
         <label for="agree-rules">I agree to all the rules</label>
         <div class="mt-sm">
           <a href="/pages/question.html" class="btn btn-sm">Start</a>
-          <a href="/pages/question.html" class="btn btn-sm btn-secondary"
-            >Go Back</a
-          >
+          <a href="/index.html" class="btn btn-sm btn-secondary">Go Back</a>
         </div>
       </div>
     </div>
