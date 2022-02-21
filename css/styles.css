@@ -98,13 +98,6 @@
   flex-basis: 45%;
 }
 
-.create-btn {
-  background-color: rgb(242, 242, 242);
-}
-.create-btn:hover {
-  background-color: rgb(242, 242, 242);
-}
-
 .leaderboard-container {
   width: 100%;
 }
