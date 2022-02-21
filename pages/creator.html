@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cloud-ui-css.netlify.app/css/main.css"
+    />
+
+    <link rel="stylesheet" href="/css/styles.css" />
+    <title>Create Quiz | Quizmill</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-sticky bg-secondary text-light">
+      <a href="#sidenav-open" class="navbar-hamburger">
+        <i class="fas fa-bars"></i>
+      </a>
+
+      <div class="d-flex justify-between gap-sm">
+        <div class="text-md text-semibold text-light mt-xxxxs">
+          <a href="/index.html"> Quiz<span class="text-primary">mill</span> </a>
+        </div>
+        <div class="input-group radius-sm p-xxxxs bg-light text-dark">
+          <input
+            class="input-field text-sm"
+            type="text"
+            placeholder="Enter Quiz title..."
+          />
+          <a class="btn btn-sm p-xxxxs create-btn radius-sm"> Settings </a>
+        </div>
+      </div>
+
+      <ul class="navbar-list text-bold">
+        <li class="navbar-item">
+          <a href="/pages/explore-more.html">Explore More </a>
+        </li>
+
+        <li class="navbar-item">
+          <a href="/pages/leaderboard.html">Leaderboard</a>
+        </li>
+        <li class="navbar-item">
+          <a href="/index.html">Exit</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Quiz Creator -->
+    <main class="p-lg d-flex flex-column gap-lg">
+      <div class="d-flex flex-column gap-xs">
+        <div
+          class="d-flex gap-sm justify-center flex-wrap items-center text-lg"
+        >
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-md p-xs flex-grow text-lg"
+            placeholder="Question"
+          /><i class="fas fa-trash"></i>
+        </div>
+        <div class="d-flex gap-sm justify-center flex-wrap">
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 1"
+          />
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 2"
+          />
+        </div>
+        <div class="d-flex gap-sm justify-center flex-wrap">
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 3"
+          />
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 4"
+          />
+        </div>
+      </div>
+      <div class="d-flex flex-column gap-xs">
+        <div
+          class="d-flex gap-sm justify-center flex-wrap items-center text-lg"
+        >
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-md p-xs flex-grow text-lg"
+            placeholder="Question"
+          /><i class="fas fa-trash"></i>
+        </div>
+        <div class="d-flex gap-sm justify-center flex-wrap">
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 1"
+          />
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 2"
+          />
+        </div>
+        <div class="d-flex gap-sm justify-center flex-wrap">
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 3"
+          />
+          <input
+            type="text"
+            id="question-title"
+            class="border radius-lg p-xxs text-md text-center"
+            placeholder="Option 4"
+          />
+        </div>
+      </div>
+      <div class="d-flex justify-center">
+        <button class="btn btn-sm btn-rounded">
+          Add Question <i class="fas fa-plus"></i>
+        </button>
+      </div>
+    </main>
+  </body>
+</html>
