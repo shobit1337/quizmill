@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
@@ -13,96 +13,21 @@
     />
     <link
       rel="stylesheet"
-      href="https://cloud-ui-css.netlify.app/css/main.css"
+      href="https://cloud-ui-css.netlify.app/dist/cloudui.css"
     />
-    <link rel="stylesheet" href="/css/styles.css" />
     <title>Quizmill</title>
+
+    <!-- PWA: Apple Touch Icon, and Service Worker registration. -->
+    <!-- Vite Plugin PWA will add the Web App Manifest during build -->
+    <link rel="apple-touch-icon" href="/images/pwa/icon-192x192.png" />
+    <script type="module">
+      // Register Service Worker using Vite Plugin PWA
+      import { registerSW } from "virtual:pwa-register";
+      registerSW();
+    </script>
   </head>
-
-  <body class="bg-light text-dark">
-    <!-- Navbar -->
-    <nav class="navbar navbar-sticky bg-secondary text-light">
-      <a href="#sidenav-open" class="navbar-hamburger">
-        <i class="fas fa-bars"></i>
-      </a>
-      <div class="d-flex justify-between gap-sm">
-        <a href="/" class="text-md text-semibold text-light mt-xxxxs">
-          Quiz<span class="text-primary">mill</span>
-        </a>
-        <div
-          class="input-group d-flex justify-between items-center radius-full p-xxxxs bg-light text-dark"
-        >
-          <i class="fas fa-search mx-xxxs"></i>
-          <input class="input-field" type="text" placeholder="Search" />
-        </div>
-      </div>
-      <ul class="navbar-list text-bold">
-        <li class="navbar-item">
-          <a href="/pages/explore-more.html">Explore More </a>
-        </li>
-
-        <li class="navbar-item">
-          <a href="/pages/leaderboard.html"> Leaderboard </a>
-        </li>
-        <li class="navbar-item">
-          <span
-            class="avatar avatar-sm text-sm bg-light text-dark avatar-circle"
-          >
-            <a href="/pages/user-profile.html">
-              <i class="far fa-user"></i>
-            </a>
-          </span>
-        </li>
-        <li class="navbar-item">
-          <a href="/pages/login.html">Log out</a>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Main -->
-    <h2 class="text-center m-sm">Quizzes Available</h2>
-
-    <div class="d-flex flex-center gap-lg flex-wrap">
-      <!-- Quiz Card -->
-      <div class="card card-shadow">
-        <img
-          class="card-image"
-          src="https://images.prismic.io/quizlet-prod/eca927aa-4f86-4e40-9565-8dd2fefb2cde_hero+image+shaded.png?auto=compress,format"
-          alt="image"
-        />
-        <div class="card-main d-flex flex-column gap-xxs">
-          <span class="card-title">JavaScript Quiz</span>
-          <div class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
-          <div class="d-flex justify-between items-center">
-            <a class="btn btn-rounded btn-sm" href="/pages/rules.html"
-              >Start Quiz</a
-            >
-            <i class="fas fa-share-alt px-sm"></i>
-          </div>
-        </div>
-      </div>
-      <!-- Quiz Card -->
-      <div class="card card-shadow">
-        <img
-          class="card-image"
-          src="https://images.prismic.io/quizlet-prod/eca927aa-4f86-4e40-9565-8dd2fefb2cde_hero+image+shaded.png?auto=compress,format"
-          alt="image"
-        />
-        <div class="card-main d-flex flex-column gap-xxs">
-          <span class="card-title">JavaScript Quiz</span>
-          <div class="card-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </div>
-          <div class="d-flex justify-between items-center">
-            <a class="btn btn-rounded btn-sm" href="/pages/rules.html"
-              >Start Quiz</a
-            >
-            <i class="fas fa-share-alt px-sm"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
