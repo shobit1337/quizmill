@@ -1,0 +1,9 @@
+export { default as HomePage } from "./HomePage/HomePage";
+export { default as ProfilePage } from "./ProfilePage/ProfilePage";
+export { default as LeaderboardPage } from "./LeaderboardPage/LeaderboardPage";
+export { default as ExplorePage } from "./ExplorePage/ExplorePage";
+export { default as ResultPage } from "./ResultPage/ResultPage";
+export { default as QuizPage } from "./QuizPage/QuizPage";
+export { default as LoginPage } from "./LoginPage/LoginPage";
+export { default as SignupPage } from "./SignupPage/SignupPage";
+export { default as CreatePage } from "./CreatePage/CreatePage";
