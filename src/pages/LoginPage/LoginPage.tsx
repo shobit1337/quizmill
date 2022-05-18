@@ -53,7 +53,11 @@ function LoginPage() {
             <button type="submit" className="btn btn-xs radius-md">
               Login
             </button>
-            <button className="btn btn-xs radius-md" onClick={loginWithGoogle}>
+            <button
+              type="button"
+              className="btn btn-xs radius-md"
+              onClick={loginWithGoogle}
+            >
               Google Login
             </button>
           </div>

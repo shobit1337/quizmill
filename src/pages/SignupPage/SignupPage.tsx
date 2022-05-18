@@ -54,7 +54,11 @@ function SignupPage() {
             <button type="submit" className="btn radius-md btn-xs">
               Sign-Up
             </button>
-            <button onClick={loginWithGoogle} className="btn radius-md btn-xs">
+            <button
+              type="button"
+              onClick={loginWithGoogle}
+              className="btn radius-md btn-xs"
+            >
               Join with Google
             </button>
           </div>
