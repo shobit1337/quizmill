@@ -8,6 +8,7 @@ specifiers:
   react: ^18.0.0
   react-dom: ^18.0.0
   react-router-dom: ^6.3.0
+  react-toastify: ^9.0.1
   typescript: ^4.3.5
   vite: ^2.9.9
   vite-plugin-pwa: ^0.11.2
@@ -20,6 +21,7 @@ dependencies:
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-router-dom: 6.3.0_ef5jwxihqo6n7gxfmzogljlgcm
+  react-toastify: 9.0.1_ef5jwxihqo6n7gxfmzogljlgcm
   workbox-recipes: 6.5.3
   workbox-routing: 6.5.3
   workbox-strategies: 6.5.3
@@ -2086,6 +2088,11 @@ packages:
       wrap-ansi: 7.0.0
     dev: false
 
+  /clsx/1.1.1:
+    resolution: {integrity: sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==}
+    engines: {node: '>=6'}
+    dev: false
+
   /color-convert/1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
     dependencies:
@@ -3138,6 +3145,17 @@ packages:
     dependencies:
       history: 5.3.0
       react: 18.1.0
+    dev: false
+
+  /react-toastify/9.0.1_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-c2zeZHkCX+WXuItS/JRqQ/8CH8Qm/je+M0rt09xe9fnu5YPJigtNOdD8zX4fwLA093V2am3abkGfOowwpkrwOQ==}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      clsx: 1.1.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
     dev: false
 
   /react/18.1.0:

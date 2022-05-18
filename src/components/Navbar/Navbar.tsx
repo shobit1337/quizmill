@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 function Navbar() {
+  const { isLoggedIn, signout } = useAuth();
   return (
     <nav className="navbar navbar-sticky bg-secondary text-light">
       <Link to="#sidenav-open" className="navbar-hamburger">
@@ -20,19 +22,29 @@ function Navbar() {
           <Link to="/explore">Explore More </Link>
         </li>
 
-        <li className="navbar-item">
-          <Link to="/leaderboard"> Leaderboard </Link>
-        </li>
-        <li className="navbar-item">
-          <span className="avatar avatar-sm text-sm bg-light text-dark avatar-circle">
-            <Link to="/profile">
-              <i className="far fa-user"></i>
-            </Link>
-          </span>
-        </li>
-        <li className="navbar-item">
-          <Link to="/pages/login.html">Log out</Link>
-        </li>
+        {isLoggedIn && (
+          <>
+            <li className="navbar-item">
+              <Link to="/leaderboard"> Leaderboard </Link>
+            </li>
+            <li className="navbar-item">
+              <span className="avatar avatar-sm text-sm bg-light text-dark avatar-circle">
+                <Link to="/profile">
+                  <i className="far fa-user"></i>
+                </Link>
+              </span>
+            </li>
+          </>
+        )}
+        {isLoggedIn ? (
+          <li className="navbar-item" onClick={signout}>
+            Log out
+          </li>
+        ) : (
+          <li className="navbar-item">
+            <Link to="/login"> Login </Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

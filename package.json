@@ -11,6 +11,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.0.1",
     "workbox-recipes": "^6.2.4",
     "workbox-routing": "^6.2.4",
     "workbox-strategies": "^6.2.4"
