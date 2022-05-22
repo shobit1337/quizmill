@@ -10,8 +10,8 @@ import {
 import { v4 as uuid } from "uuid";
 
 import { db } from "../firebaseConfig";
-import { UserDataType } from "../types/authTypes";
-import { QuizType } from "../types/quizTypes";
+import { HistoryType, UserDataType } from "../types/authTypes";
+import { QuizResultType, QuizType } from "../types/quizTypes";
 
 export const createQuiz = async (quiz: QuizType, user: UserDataType) => {
   const quizObj = {
@@ -48,7 +48,39 @@ export const getAllQuizes = async (): Promise<QuizType[]> => {
   return allQuizes;
 };
 
-export const getQuize = async (quizId: string): Promise<QuizType> => {
+export const getQuiz = async (quizId: string): Promise<QuizType> => {
   const workspaceDoc = await getDoc(doc(db, "quizes", quizId));
   return workspaceDoc?.data() as QuizType;
+};
+
+export const submitQuiz = async (
+  result: QuizResultType,
+  user: UserDataType
+) => {
+  const quizObj = {
+    ...result,
+    uid: uuid(),
+  };
+
+  try {
+    const resultRef = await doc(collection(db, "results"), quizObj.uid);
+    await setDoc(resultRef, {
+      ...quizObj,
+    });
+
+    const userRef = await doc(collection(db, "users"), user?.uid);
+    await setDoc(
+      userRef,
+      {
+        history: [
+          ...(user?.history as HistoryType[]),
+          { resultId: quizObj.uid, score: quizObj.score },
+        ],
+      },
+      { merge: true }
+    );
+    return quizObj;
+  } catch (error) {
+    console.error(error);
+  }
 };

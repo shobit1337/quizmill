@@ -15,4 +15,12 @@ type QuizQuestionType = {
   correct: number;
 };
 
-export type { QuizType, QuizQuestionType };
+type QuizResultType = {
+  quizId: string;
+  quizTime: Date;
+  player: string;
+  score: number;
+  options: string[];
+};
+
+export type { QuizType, QuizQuestionType, QuizResultType };

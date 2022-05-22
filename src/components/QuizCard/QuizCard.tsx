@@ -1,8 +1,21 @@
-import { useState } from "react";
-import { Modal, Rules } from "../";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-function QuizCard() {
-  const [isRulesOpen, setIsRulesOpen] = useState(false);
+import { QuizType } from "../../types/quizTypes";
+
+type PropsType = {
+  quiz: QuizType;
+};
+
+function QuizCard({ quiz }: PropsType) {
+  const navigate = useNavigate();
+
+  const shareQuizHandler = () => {
+    navigator.clipboard.writeText(
+      `https://quizmill.netlify.app/quiz/${quiz.uid}`
+    );
+    toast.info("Quiz link copied to clipboad.");
+  };
   return (
     <div className="card card-shadow">
       <img
@@ -11,25 +24,18 @@ function QuizCard() {
         alt="image"
       />
       <div className="card-main d-flex flex-column gap-xxs">
-        <span className="card-title">JavaScript Quiz</span>
-        <div className="card-text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        </div>
+        <span className="card-title">{quiz.title}</span>
+        <div className="card-text">{quiz.description}</div>
         <div className="d-flex justify-between items-center">
           <span
             className="btn btn-rounded btn-sm"
-            onClick={() => setIsRulesOpen(true)}
+            onClick={() => navigate(`/quiz/${quiz.uid}`)}
           >
             Start Quiz
           </span>
-          <i className="fas fa-share-alt px-sm"></i>
+          <i className="fas fa-share-alt px-sm" onClick={shareQuizHandler}></i>
         </div>
       </div>
-      {isRulesOpen && (
-        <Modal onClose={() => setIsRulesOpen(false)}>
-          <Rules />
-        </Modal>
-      )}
     </div>
   );
 }
