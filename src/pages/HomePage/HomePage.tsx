@@ -9,7 +9,6 @@ function HomePage() {
   useEffect(() => {
     (async () => {
       const quizesData = await getAllQuizes();
-      console.log(quizesData);
       if (quizesData) {
         setQuizes(quizesData);
       }
