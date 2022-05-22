@@ -25,7 +25,7 @@ type UserDataType = {
 } | null;
 
 type HistoryType = {
-  quizId: string;
+  resultId: string;
   score: number;
 };
 

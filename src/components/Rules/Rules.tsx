@@ -1,9 +1,16 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+type PropsType = {
+  title: string;
+  start: () => void;
+};
 
-function Rules() {
+function Rules({ title, start }: PropsType) {
+  const navigate = useNavigate();
+  const [agreedToRules, setAgreedToRules] = useState(false);
   return (
     <div>
-      <h2 className="text-center m-sm">JavaScript Quiz</h2>
+      <h2 className="text-center m-sm">{title}</h2>
 
       <div className="d-flex flex-column flex-center gap-sm m-auto">
         <ul className="list">
@@ -13,10 +20,10 @@ function Rules() {
           </li>
           <li className="list-item">Each question have 4 options.</li>
           <li className="list-item">
-            There will be 2 marks for every correction answer.
+            There will be 1 marks for every correction answer.
           </li>
           <li className="list-item">
-            There will be deduction of 1 mark on wrong answer.
+            There will be no deduction on wrong answer.
           </li>
           <li className="list-item">
             You can not visit the previous question.
@@ -27,15 +34,27 @@ function Rules() {
           </li>
         </ul>
         <div>
-          <input type="checkbox" name="" id="agree-rules" />
+          <input
+            type="checkbox"
+            name=""
+            id="agree-rules"
+            checked={agreedToRules}
+            onChange={() => setAgreedToRules((state) => !state)}
+          />
           <label htmlFor="agree-rules">I agree to all the rules</label>
           <div className="mt-sm">
-            <Link to="quiz" className="btn btn-sm">
+            <button
+              onClick={() => agreedToRules && start()}
+              className="btn btn-sm"
+            >
               Start
-            </Link>
-            <Link to="-1" className="btn btn-sm btn-secondary">
+            </button>
+            <button
+              onClick={() => navigate(-1)}
+              className="btn btn-sm btn-secondary"
+            >
               Go Back
-            </Link>
+            </button>
           </div>
         </div>
       </div>

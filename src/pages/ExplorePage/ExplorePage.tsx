@@ -1,40 +1,79 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { QuizCard } from "../../components";
+import { getAllQuizes } from "../../services/quizServices";
+import { QuizType } from "../../types/quizTypes";
 
 function ExplorePage() {
+  const [quizes, setQuizes] = useState([] as QuizType[]);
+  const [selectedQuizes, setSelectedQuizes] = useState([] as QuizType[]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      const quizesData = await getAllQuizes();
+      if (quizesData) {
+        setQuizes(quizesData);
+      }
+    })();
+  }, []);
+  useEffect(() => {
+    if (selectedCategory && quizes.length) {
+      const selected = quizes.filter(
+        (quiz) => quiz.category === selectedCategory
+      );
+      setSelectedQuizes([...selected]);
+    }
+  }, [selectedCategory]);
+
   return (
     <>
       <h4 className="m-sm">Popular Categories</h4>
       <div className="category-container grid grid-6 gap-sm text-md m-sm">
-        <Link to="explore" className="quiz-category bg-secondary">
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-secondary cursor-pointer"
+        >
           General Knowledge
-        </Link>
-        <Link to="explore" className="quiz-category bg-accient">
+        </span>
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-accient cursor-pointer"
+        >
           Trivia
-        </Link>
-        <Link to="explore" className="quiz-category bg-danger">
+        </span>
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-danger cursor-pointer"
+        >
           Geography
-        </Link>
-        <Link to="explore" className="quiz-category bg-success">
+        </span>
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-success cursor-pointer"
+        >
           Math
-        </Link>
-        <Link to="explore" className="quiz-category bg-warn">
+        </span>
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-warn cursor-pointer"
+        >
           Science
-        </Link>
-        <Link to="explore" className="quiz-category bg-dark-lighter">
+        </span>
+        <span
+          onClick={() => setSelectedCategory("")}
+          className="quiz-category bg-dark-lighter cursor-pointer"
+        >
           Technology
-        </Link>
+        </span>
       </div>
       <hr />
       <h4 className="m-sm">Most Popular</h4>
       <div className="d-flex gap-lg flex-wrap m-sm">
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
-        <QuizCard />
+        {selectedCategory
+          ? selectedQuizes.map((quiz, index) => (
+              <QuizCard key={index} quiz={quiz} />
+            ))
+          : quizes.map((quiz, index) => <QuizCard key={index} quiz={quiz} />)}
       </div>
     </>
   );
