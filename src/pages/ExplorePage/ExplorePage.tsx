@@ -16,6 +16,7 @@ function ExplorePage() {
       }
     })();
   }, []);
+
   useEffect(() => {
     if (selectedCategory && quizes.length) {
       const selected = quizes.filter(

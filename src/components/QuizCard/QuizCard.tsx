@@ -16,6 +16,7 @@ function QuizCard({ quiz }: PropsType) {
     );
     toast.info("Quiz link copied to clipboad.");
   };
+
   return (
     <div className="card card-shadow">
       <img

@@ -16,6 +16,7 @@ type QuizQuestionType = {
 };
 
 type QuizResultType = {
+  uid?: string;
   quizId: string;
   quizTime: Date;
   player: string;

@@ -1,14 +1,39 @@
-function ResultCard() {
+import { useRef } from "react";
+import { QuizQuestionType } from "../../types/quizTypes";
+
+type PropsType = {
+  quizQuestion: QuizQuestionType;
+  result: number;
+  index: number;
+};
+
+function ResultCard({ quizQuestion, result, index }: PropsType) {
+  const isAnswered = useRef(result >= 0 ? true : false);
   return (
     <div>
       <p className="text-md m-md">
-        <span className="text-bold">Question 1: </span>How do you call a
-        function named "myFunction"?
+        <span className="text-bold">Question {index + 1}: </span>
+        {quizQuestion.question}
       </p>
       <div className="d-flex flex-column items-center gap-sm">
-        <li className="quiz-option">call myFunction()</li>
-        <li className="quiz-option bg-success">myFunction()</li>
-        <li className="quiz-option">call function myFunction()</li>
+        {quizQuestion.options.map((option, index) => (
+          <li
+            key={index}
+            className={`quiz-option ${
+              isAnswered
+                ? result === index
+                  ? quizQuestion.correct === result
+                    ? "bg-success"
+                    : "bg-danger"
+                  : ""
+                : quizQuestion.correct === index
+                ? "text-success"
+                : ""
+            }`}
+          >
+            {option}
+          </li>
+        ))}
       </div>
     </div>
   );
