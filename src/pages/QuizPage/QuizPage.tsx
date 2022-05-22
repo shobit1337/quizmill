@@ -117,6 +117,7 @@ function QuizPage() {
       );
     }
   }
+  return <div>Loading...</div>;
 }
 
 export default QuizPage;
