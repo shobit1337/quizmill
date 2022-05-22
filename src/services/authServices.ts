@@ -15,6 +15,6 @@ import { db } from "../firebaseConfig";
 const getUserData = async (id: string) => {
   const q = query(collection(db, "users"), where("uid", "==", id));
   onSnapshot(q, (data) => {
-    return data.docs[0].data() as UserType;
+    return data.docs[0].data();
   });
 };
