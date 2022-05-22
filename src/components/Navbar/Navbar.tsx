@@ -28,6 +28,9 @@ function Navbar() {
               <Link to="/leaderboard"> Leaderboard </Link>
             </li>
             <li className="navbar-item">
+              <Link to="/create"> Create Quiz </Link>
+            </li>
+            <li className="navbar-item">
               <span className="avatar avatar-sm text-sm bg-light text-dark avatar-circle">
                 <Link to="/profile">
                   <i className="far fa-user"></i>

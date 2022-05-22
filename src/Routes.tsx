@@ -6,6 +6,7 @@ import {
 import App from "./App";
 import { PrivateRoute } from "./components";
 import {
+  CreatePage,
   ExplorePage,
   HomePage,
   LeaderboardPage,
@@ -28,6 +29,7 @@ function Routes() {
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/profile/result/:resultId" element={<ResultPage />} />
             <Route path="/quiz/:quizId" element={<QuizPage />} />
+            <Route path="/create" element={<CreatePage />} />
           </Route>
           <Route element={<PrivateRoute authRoute />}>
             <Route path="/login" element={<LoginPage />} />
