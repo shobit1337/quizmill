@@ -1,10 +1,16 @@
 type AuthContextType = {
   currentUser: UserDataType;
   signin: (email: string, password: string) => void;
-  signup: (name: string, email: string, password: string) => void;
+  signup: (userObj: NewUserType) => void;
   signout: () => void;
   loginWithGoogle: () => void;
   isLoggedIn: boolean;
+};
+
+type NewUserType = {
+  name: string;
+  email: string;
+  password: string;
 };
 
 type UserDataType = {

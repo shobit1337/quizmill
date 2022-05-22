@@ -28,6 +28,7 @@ function SignupPage() {
           <div className="d-flex items-center gap-sm flex-grow">
             <i className="far fa-user"></i>
             <input
+              required
               placeholder="Enter your Email"
               className="input-field login-field"
               type="email"
@@ -41,6 +42,7 @@ function SignupPage() {
           <div className="d-flex items-center gap-sm">
             <i className="fas fa-lock"></i>
             <input
+              required
               placeholder="Enter your password"
               className="input-field login-field radius-md"
               type="text"

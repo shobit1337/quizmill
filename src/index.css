@@ -66,6 +66,24 @@
 .quiz-option:hover {
   box-shadow: var(--box-shadow-sm);
 }
+.correct-btn{
+  background-color: transparent;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  font-size: 1.7rem;
+  color: var(--dark-lighter);
+  margin: 0 var(--space-xxs);
+}
+.correct-btn:hover{
+  color: var(--success-color);
+  font-weight: 700;
+}
+.correct-btn.active {
+  color: var(--success-color);
+  font-weight: 700;
+}
+
 
 .result-container {
   width: 100%;
