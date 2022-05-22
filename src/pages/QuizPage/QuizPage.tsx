@@ -45,9 +45,9 @@ function QuizPage() {
     }
     setProgress({ ...newProgress });
     if (currentQuestion >= quizData.questions.length - 1) {
-      await submitQuiz(newProgress, currentUser);
+      const result = await submitQuiz(newProgress, currentUser);
       toast.success("Quiz submitted!");
-      navigate("/");
+      navigate(`/profile/result/${result?.uid}`);
     } else {
       setCurrentQuestion((no) => no + 1);
     }
