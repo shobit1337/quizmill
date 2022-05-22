@@ -12,24 +12,19 @@ import {
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 
 import { auth, db } from "../firebaseConfig";
+import { AuthContextType, UserDataType } from "../types/authTypes";
 
 const provider = new GoogleAuthProvider();
 
-interface TAuthContext {
-  currentUser: any;
-  signup: (user: any) => void;
-  signin: (email: string, password: string) => void;
-  signout: () => void;
-  loginWithGoogle: () => void;
-  isLoggedIn: boolean;
-}
-
-const AuthContext = createContext({} as TAuthContext);
+const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const useAuth = () => useContext(AuthContext);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentUser, setCurrentUser]: [any, any] = useState(null);
+  const [currentUser, setCurrentUser]: [
+    UserDataType,
+    React.Dispatch<React.SetStateAction<UserDataType>>
+  ] = useState(null as UserDataType);
   const [isLoading, setIsLoading] = useState(true);
   const isLoggedIn = currentUser ? true : false;
 
@@ -39,7 +34,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       if (user) {
         const userObj = await getDoc(doc(db, `users/${user.uid}`));
         const data = userObj.data();
-        if (data) setCurrentUser(data);
+        if (data) setCurrentUser(data as UserDataType);
       } else {
         setCurrentUser(null);
       }
@@ -56,15 +51,15 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         // If this is new user, add them to firestore
         const isUserPresent = await getDoc(doc(db, "users", result.user.uid));
         if (!isUserPresent.data()) {
-          const userDetails = {
+          const userDetails: UserDataType = {
             uid: result.user.uid,
-            name: result.user.displayName,
-            email: result.user.email,
-            photoURL: result.user.photoURL,
+            name: result.user.displayName as string,
+            email: result.user.email as string,
+            photoURL: result.user.photoURL as string,
             quizes: [],
             points: 0,
             friends: [],
-            played: [],
+            history: [],
           };
           const userRef = await doc(collection(db, "users"), userDetails.uid);
           await setDoc(userRef, {
@@ -84,15 +79,15 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     await createUserWithEmailAndPassword(auth, user.email, user.password)
       .then((result) => {
         const userRef = doc(collection(db, "users"), result.user.uid);
-        const userDetails = {
+        const userDetails: UserDataType = {
           uid: result.user.uid,
           name: user.name,
-          email: result.user.email,
+          email: result.user.email as string,
           photoURL: "",
           quizes: [],
           points: 0,
           friends: [],
-          played: [],
+          history: [],
         };
         setDoc(userRef, {
           ...userDetails,
@@ -123,7 +118,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     toast.success("Logged Out Successfully!");
   };
 
-  const value: TAuthContext = {
+  const value: AuthContextType = {
     currentUser,
     signup,
     signin,
