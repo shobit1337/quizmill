@@ -3,6 +3,39 @@ import { QuizCard } from "../../components";
 import { getAllQuizes } from "../../services/quizServices";
 import { QuizType } from "../../types/quizTypes";
 
+const categories = [
+  {
+    id: "",
+    title: "All",
+    color: "bg-dark-lighter",
+  },
+  {
+    id: "technology",
+    title: "Technology",
+    color: "bg-secondary",
+  },
+  {
+    id: "javascript",
+    title: "JavaScript",
+    color: "bg-accient",
+  },
+  {
+    id: "cpp",
+    title: "C Pogramming",
+    color: "bg-danger",
+  },
+  {
+    id: "generalknowledge",
+    title: "General Knowledge",
+    color: "bg-success",
+  },
+  {
+    id: "reactjs",
+    title: "React",
+    color: "bg-warn",
+  },
+];
+
 function ExplorePage() {
   const [quizes, setQuizes] = useState([] as QuizType[]);
   const [selectedQuizes, setSelectedQuizes] = useState([] as QuizType[]);
@@ -29,43 +62,20 @@ function ExplorePage() {
   return (
     <>
       <h4 className="m-sm">Popular Categories</h4>
-      <div className="category-container grid grid-6 gap-sm text-md m-sm">
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-secondary cursor-pointer"
-        >
-          General Knowledge
-        </span>
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-accient cursor-pointer"
-        >
-          Trivia
-        </span>
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-danger cursor-pointer"
-        >
-          Geography
-        </span>
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-success cursor-pointer"
-        >
-          Math
-        </span>
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-warn cursor-pointer"
-        >
-          Science
-        </span>
-        <span
-          onClick={() => setSelectedCategory("")}
-          className="quiz-category bg-dark-lighter cursor-pointer"
-        >
-          Technology
-        </span>
+      <div
+        className="category-container d-flex gap-sm text-md m-sm"
+        id="category-container"
+        onClick={(e) => setSelectedCategory((e.target as HTMLElement).id)}
+      >
+        {categories.map((category) => (
+          <span
+            key={category.id}
+            id={category.id}
+            className={`quiz-category ${category.color} cursor-pointer`}
+          >
+            {category.title}
+          </span>
+        ))}
       </div>
       <hr />
       <h4 className="m-sm">Most Popular</h4>
