@@ -22,7 +22,7 @@ type UserDataType = {
   history: HistoryType[];
   points: number;
   quizes: string[];
-} | null;
+};
 
 type HistoryType = {
   resultId: string;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import { ResultCard } from "../../components";
 import { useAuth } from "../../context/AuthContext";
 import { getQuiz } from "../../services/quizServices";
@@ -7,7 +8,6 @@ import { getResult } from "../../services/resultServices";
 import { QuizResultType, QuizType } from "../../types/quizTypes";
 
 function ResultPage() {
-  const { currentUser } = useAuth();
   const { resultId } = useParams();
   const navigate = useNavigate();
 
@@ -18,16 +18,18 @@ function ResultPage() {
     if (resultId) {
       (async () => {
         const resultRes = await getResult(resultId);
-        if (resultRes.uid) {
+        if (resultRes?.uid) {
           setResultData(resultRes);
           const quizRes = await getQuiz(resultRes.quizId);
-          if (quizRes.uid) setQuizData(quizRes);
+          if (quizRes?.uid) setQuizData(quizRes);
         } else {
-          navigate("-1");
+          toast.warn("Invalid Result");
+          navigate(-1);
         }
       })();
     } else {
-      navigate("-1");
+      navigate(-1);
+      toast.warn("Invalid Result");
     }
   }, []);
 

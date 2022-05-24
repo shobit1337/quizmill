@@ -24,9 +24,9 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [currentUser, setCurrentUser]: [
     UserDataType,
     React.Dispatch<React.SetStateAction<UserDataType>>
-  ] = useState(null as UserDataType);
+  ] = useState({} as UserDataType);
   const [isLoading, setIsLoading] = useState(true);
-  const isLoggedIn = currentUser ? true : false;
+  const isLoggedIn = currentUser.uid ? true : false;
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -36,7 +36,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         const data = userObj.data();
         if (data) setCurrentUser(data as UserDataType);
       } else {
-        setCurrentUser(null);
+        setCurrentUser({} as UserDataType);
       }
       setIsLoading(false);
     });

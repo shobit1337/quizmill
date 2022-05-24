@@ -28,7 +28,7 @@ function QuizPage() {
   const submitQuizHandler = async () => {
     const result = await submitQuiz(progress, currentUser);
     toast.success("Quiz submitted!");
-    navigate(`/profile/result/${result?.uid}`);
+    navigate(`/profile/result/${result.uid}`);
   };
 
   const nextHandler = async (selectedOption: number) => {
@@ -47,7 +47,7 @@ function QuizPage() {
     if (currentQuestion >= quizData.questions.length - 1) {
       const result = await submitQuiz(newProgress, currentUser);
       toast.success("Quiz submitted!");
-      navigate(`/profile/result/${result?.uid}`);
+      navigate(`/profile/result/${result.uid}`);
     } else {
       setCurrentQuestion((no) => no + 1);
     }

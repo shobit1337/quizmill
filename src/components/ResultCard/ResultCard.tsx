@@ -1,4 +1,5 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
+import { isNum } from "react-toastify/dist/utils";
 import { QuizQuestionType } from "../../types/quizTypes";
 
 type PropsType = {
@@ -8,7 +9,22 @@ type PropsType = {
 };
 
 function ResultCard({ quizQuestion, result, index }: PropsType) {
-  const isAnswered = useRef(result >= 0 ? true : false);
+  const isAnswered = useMemo(() => (result >= 0 ? true : false), []);
+
+  const getCorrectOption = (optionIndex: number) => {
+    return isAnswered
+      ? result === optionIndex
+        ? quizQuestion.correct === result
+          ? "bg-success"
+          : "bg-danger"
+        : quizQuestion.correct === optionIndex
+        ? "bg-success"
+        : ""
+      : quizQuestion.correct === optionIndex
+      ? "text-success"
+      : "";
+  };
+
   return (
     <div>
       <p className="text-md m-md">
@@ -16,20 +32,10 @@ function ResultCard({ quizQuestion, result, index }: PropsType) {
         {quizQuestion.question}
       </p>
       <div className="d-flex flex-column items-center gap-sm">
-        {quizQuestion.options.map((option, index) => (
+        {quizQuestion.options.map((option, optionIndex) => (
           <li
-            key={index}
-            className={`quiz-option ${
-              isAnswered
-                ? result === index
-                  ? quizQuestion.correct === result
-                    ? "bg-success"
-                    : "bg-danger"
-                  : ""
-                : quizQuestion.correct === index
-                ? "text-success"
-                : ""
-            }`}
+            key={optionIndex}
+            className={`quiz-option ${getCorrectOption(optionIndex)}`}
           >
             {option}
           </li>

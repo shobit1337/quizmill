@@ -56,8 +56,8 @@ export const getQuiz = async (quizId: string): Promise<QuizType> => {
 export const submitQuiz = async (
   result: QuizResultType,
   user: UserDataType
-) => {
-  const quizObj = {
+): Promise<QuizResultType> => {
+  const quizObj: QuizResultType = {
     ...result,
     uid: uuid(),
   };
@@ -68,19 +68,19 @@ export const submitQuiz = async (
       ...quizObj,
     });
 
-    const userRef = await doc(collection(db, "users"), user?.uid);
+    const userRef = await doc(collection(db, "users"), user.uid);
     await setDoc(
       userRef,
       {
         history: [
-          ...(user?.history as HistoryType[]),
+          ...(user.history as HistoryType[]),
           { resultId: quizObj.uid, score: quizObj.score },
         ],
       },
       { merge: true }
     );
-    return quizObj;
   } catch (error) {
     console.error(error);
   }
+  return quizObj;
 };
